@@ -142,13 +142,24 @@ class BinarySearchTree
    }
 
    /**
-    * TODO IMPLEMENT AND COMMENT
-    * @param root
-    * @return
+    * Finds and returns largest Integer value within tree or throws NullPointerException if tree has no values.
+    * @return Integer largest value
+    * @throws NullPointerException Throws if tree has no values
     */
-   public int getMax(Node root){
-      //implement me
-      return -1;
+   public int getMax() throws NullPointerException
+   {
+      // Traverse right until null node is found which means the largest node is found.
+      Node crawler = this.root;
+      while (crawler != null)
+      {
+         if (crawler.right == null)
+         {
+            return crawler.value;
+         }
+         crawler = crawler.right;
+      }
+      // Throws exception if tree is empty
+      throw new NullPointerException();
    }
 
    /*
@@ -190,7 +201,7 @@ class BinarySearchTree
          else
          {
             //case #3 : 2 children
-            root.value = getMax(root.left);
+            root.value = getMax();
             root.left = delete(root.left, root.value);
          }
       }

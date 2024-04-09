@@ -17,6 +17,15 @@ public class Application
             System.out.print("NullPointerException caught as intended\n");
         }
 
+        // TESTING BinarySearchTree.getMin()
+        System.out.print("\n~~~~ NEW TEST BLOCK: getMax()\n");
+        System.out.print("Attempting to getMax() value in empty tree\n");
+        try { tree.getMax(); }
+        catch (NullPointerException e)
+        {
+            System.out.print("NullPointerException caught as intended\n");
+        }
+
         // TESTING BinarySearchTree.insert()
         System.out.print("\n~~~~ NEW TEST BLOCK: insert()\n");
         System.out.print("Inserting values [ 24, 80, 18, 9, 90, 22 ]\n");
@@ -39,5 +48,12 @@ public class Application
         System.out.print("Adding \"2\" to tree\n");
         tree.insert(2);
         System.out.printf("Smallest node in tree: %d\n", tree.getMin());
+
+        // TESTING BinarySearchTree.getMin()
+        System.out.print("\n~~~~ NEW TEST BLOCK: getMax()\n");
+        System.out.printf("Largest node in tree: %d\n", tree.getMax());
+        System.out.print("Adding \"512\" to tree\n");
+        tree.insert(512);
+        System.out.printf("Largest node in tree: %d\n", tree.getMax());
     }
 }
