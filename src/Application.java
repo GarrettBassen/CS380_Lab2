@@ -16,5 +16,9 @@ public class Application
         System.out.print("in-order :   ");
         tree.inOrderTraversal();
         System.out.println();
+
+        System.out.printf("Found \"123\" within tree: %b\n", tree.find(123));
+        System.out.printf("Found \"24\" within tree: %b\n", tree.find(24));
+        System.out.printf("Found \"9\" within tree: %b\n", tree.find(9));
     }
 }

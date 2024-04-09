@@ -91,13 +91,32 @@ class BinarySearchTree
    }
 
    /**
-    * TODO IMPLEMENT AND COMMENT
-    * @param key
-    * @return
+    * Searches through all nodes in tree and returns boolean True or False based on if value was found.
+    * @param key Integer value to search for
+    * @return Boolean value representing if value was found
     */
    public boolean find(int key)
    {
-      //implement me
+      // Search for value throughout list
+      Node crawler = this.root;
+      while (crawler != null)
+      {
+         // If value is found, return true
+         if (key == crawler.value) { return true; }
+
+         // If value is less than current node, traverse left
+         else if (key < crawler.value)
+         {
+            crawler = crawler.left;
+         }
+         // If value is greater than current node, traverse right
+         else
+         {
+            crawler = crawler.right;
+         }
+      }
+
+      // Value was not found; return false.
       return false;
    }
 
