@@ -121,13 +121,24 @@ class BinarySearchTree
    }
 
    /**
-    * TODO IMPLEMENT AND COMMENT
-    * @param root
-    * @return
+    * Finds and returns smallest Integer value within tree or throws NullPointerException if tree has no values.
+    * @return Integer smallest value
+    * @throws NullPointerException Throws if tree has no values
     */
-   public int getMin(Node root){
-      //implement me
-      return -1;
+   public int getMin() throws NullPointerException
+   {
+      // Traverse left until null node is found which means the smallest node is found.
+      Node crawler = this.root;
+      while (crawler != null)
+      {
+         if (crawler.left == null)
+         {
+            return crawler.value;
+         }
+         crawler = crawler.left;
+      }
+      // Throws exception if tree is empty
+      throw new NullPointerException();
    }
 
    /**
@@ -142,7 +153,7 @@ class BinarySearchTree
 
    /*
    this method will not compile until getMax
-   is implemented
+   is implemented TODO EXAMINE
    */
    public Node delete(Node root, int key)
    {
