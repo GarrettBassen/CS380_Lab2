@@ -74,6 +74,16 @@ class BinarySearchTree
    /**
     * Prints bracket-encased tree values in space-separated pre-order value.
     */
+   public void preOrderTraversal()
+   {
+      System.out.print("[");
+      recursivePreOrder(this.root);
+      System.out.print(" ]\n");
+   }
+
+   /**
+    * Prints bracket-encased tree values in space-separated ordered value.
+    */
    public void inOrderTraversal()
    {
       System.out.print("[");
@@ -82,15 +92,7 @@ class BinarySearchTree
    }
 
    /**
-    * TODO IMPLEMENT AND COMMENT
-    */
-   public void preOrderTraversal()
-   {
-      //implement me
-   }
-
-   /**
-    * TODO IMPLEMENT AND COMMENT
+    * Prints bracket-encased tree values in space-separated post-order value.
     */
    public void postOrderTraversal()
    {
@@ -222,6 +224,20 @@ class BinarySearchTree
    /* * * * * * * * * * * * * * * * * * * * HELPER FUNCTIONS  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /**
+    * Recursively travels through tree and prints nodes in pre-order.
+    * @param root Node root of the tree to traverse
+    */
+   private void recursivePreOrder(Node root)
+   {
+      if (root == null) { return; }
+
+      // Traverse left and right, printing in pre-order
+      System.out.printf(" %d", root.value);
+      recursiveInOrder(root.left);
+      recursiveInOrder(root.right);
+   }
+
+   /**
     * Recursively travels through tree and prints nodes in order.
     * @param root Node root of the tree to traverse
     */
@@ -229,7 +245,7 @@ class BinarySearchTree
    {
       if (root == null) { return; }
 
-      // Traverse left and right, printing in pre-order
+      // Traverse left and right, printing in order
       recursiveInOrder(root.left);
       System.out.printf(" %d", root.value);
       recursiveInOrder(root.right);
