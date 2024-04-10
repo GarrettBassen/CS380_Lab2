@@ -102,18 +102,28 @@ class BinarySearchTree
    }
 
    /**
-    * Searches through all nodes in tree and returns boolean True or False based on if value was found.
+    * Searches tree for value and returns true if value is found; else, returns false.
     * @param key Integer value to search for
-    * @return Boolean value representing if value was found
+    * @return True if value is found in tree; otherwise, false
     */
-   public boolean find(int key)
+   public boolean contains(int key)
+   {
+      return getNode(key) != null;
+   }
+
+   /**
+    * Searches through all nodes in tree and returns Node reference if value was found or null.
+    * @param key Integer value to search for
+    * @return Node reference or null
+    */
+   public Node getNode(int key)
    {
       // Search for value throughout list
       Node crawler = this.root;
       while (crawler != null)
       {
-         // If value is found, return true
-         if (key == crawler.value) { return true; }
+         // If value is found, return Node
+         if (key == crawler.value) { return crawler; }
 
          // If value is less than current node, traverse left
          else if (key < crawler.value)
@@ -128,7 +138,7 @@ class BinarySearchTree
       }
 
       // Value was not found; return false.
-      return false;
+      return null;
    }
 
    /**

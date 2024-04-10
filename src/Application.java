@@ -36,11 +36,11 @@ public class Application
         tree.insert(90);
         tree.insert(22);
 
-        // TESTING BinarySearchTree.find()
-        System.out.print("\n~~~~ NEW TEST BLOCK: find()\n");
-        System.out.printf("Found \"123\" within tree: %b\n", tree.find(123));
-        System.out.printf("Found \"24\" within tree: %b\n", tree.find(24));
-        System.out.printf("Found \"9\" within tree: %b\n", tree.find(9));
+        // TESTING BinarySearchTree.contains()
+        System.out.print("\n~~~~ NEW TEST BLOCK: contains()\n");
+        System.out.printf("Found \"123\" within tree: %b\n", tree.contains(123));
+        System.out.printf("Found \"24\" within tree: %b\n", tree.contains(24));
+        System.out.printf("Found \"9\" within tree: %b\n", tree.contains(9));
 
         // TESTING BinarySearchTree.getMin()
         System.out.print("\n~~~~ NEW TEST BLOCK: getMin()\n");
