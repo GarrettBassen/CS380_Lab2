@@ -3,6 +3,10 @@ class BinarySearchTree
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * * * * * NODE CLASS  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+   /**
+    * Node class contains a value as well as a left and right node. The tree is made of node objects.
+    */
    static class Node
    {
       protected Node left, right;
@@ -15,6 +19,7 @@ class BinarySearchTree
          this.right = null;
       }
    }
+
 
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * START OF TREE CLASS * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -67,11 +72,13 @@ class BinarySearchTree
    }
 
    /**
-    * TODO IMPLEMENT AND COMMENT
+    * Prints bracket-encased tree values in space-separated pre-order value.
     */
    public void preOrderTraversal()
    {
-      //implement me
+      System.out.print("[");
+      recursivePreOrder(this.root);
+      System.out.print(" ]");
    }
 
    /**
@@ -206,5 +213,23 @@ class BinarySearchTree
          }
       }
       return root;
+   }
+
+
+   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+   /* * * * * * * * * * * * * * * * * * * * HELPER FUNCTIONS  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+   /**
+    * Recursively travels through tree and prints nodes in pre-order.
+    * @param root Node roof of the tree to traverse
+    */
+   private void recursivePreOrder(Node root)
+   {
+      if (root == null) { return; }
+
+      // Traverse left and right, printing in pre-order
+      recursivePreOrder(root.left);
+      System.out.printf(" %d", root.value);
+      recursivePreOrder(root.right);
    }
 }

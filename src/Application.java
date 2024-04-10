@@ -55,5 +55,10 @@ public class Application
         System.out.print("Adding \"512\" to tree\n");
         tree.insert(512);
         System.out.printf("Largest node in tree: %d\n", tree.getMax());
+
+        // TESTING BinarySearchTree.preOrderTraversal()
+        System.out.print("\n~~~~ NEW TEST BLOCK: preOrderTraversal()\n");
+        System.out.print("Printing tree in pre-order value\n");
+        tree.preOrderTraversal();
     }
 }
