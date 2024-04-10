@@ -74,17 +74,17 @@ class BinarySearchTree
    /**
     * Prints bracket-encased tree values in space-separated pre-order value.
     */
-   public void preOrderTraversal()
+   public void inOrderTraversal()
    {
       System.out.print("[");
-      recursivePreOrder(this.root);
-      System.out.print(" ]");
+      recursiveInOrder(this.root);
+      System.out.print(" ]\n");
    }
 
    /**
     * TODO IMPLEMENT AND COMMENT
     */
-   public void inOrderTraversal()
+   public void preOrderTraversal()
    {
       //implement me
    }
@@ -94,7 +94,9 @@ class BinarySearchTree
     */
    public void postOrderTraversal()
    {
-      //implement me
+      System.out.print("[");
+      recursivePostOrder(this.root);
+      System.out.print(" ]\n");
    }
 
    /**
@@ -220,16 +222,30 @@ class BinarySearchTree
    /* * * * * * * * * * * * * * * * * * * * HELPER FUNCTIONS  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /**
-    * Recursively travels through tree and prints nodes in pre-order.
-    * @param root Node roof of the tree to traverse
+    * Recursively travels through tree and prints nodes in order.
+    * @param root Node root of the tree to traverse
     */
-   private void recursivePreOrder(Node root)
+   private void recursiveInOrder(Node root)
    {
       if (root == null) { return; }
 
       // Traverse left and right, printing in pre-order
-      recursivePreOrder(root.left);
+      recursiveInOrder(root.left);
       System.out.printf(" %d", root.value);
-      recursivePreOrder(root.right);
+      recursiveInOrder(root.right);
+   }
+
+   /**
+    * Recursively travels through tree and prints nodes in post-order.
+    * @param root Node root of the tree to traverse
+    */
+   private void recursivePostOrder(Node root)
+   {
+      if (root == null) { return; }
+
+      // Traverse left and right, printing in post-order
+      recursivePostOrder(root.left);
+      recursivePostOrder(root.right);
+      System.out.printf(" %d", root.value);
    }
 }

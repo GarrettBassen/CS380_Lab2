@@ -57,8 +57,13 @@ public class Application
         System.out.printf("Largest node in tree: %d\n", tree.getMax());
 
         // TESTING BinarySearchTree.preOrderTraversal()
-        System.out.print("\n~~~~ NEW TEST BLOCK: preOrderTraversal()\n");
-        System.out.print("Printing tree in pre-order value\n");
-        tree.preOrderTraversal();
+        System.out.print("\n~~~~ NEW TEST BLOCK: inOrderTraversal()\n");
+        System.out.print("Printing tree in order\n");
+        tree.inOrderTraversal();
+
+        // TESTING BinarySearchTree.preOrderTraversal()
+        System.out.print("\n~~~~ NEW TEST BLOCK: postOrderTraversal()\n");
+        System.out.print("Printing tree in post-order\n");
+        tree.postOrderTraversal();
     }
 }
