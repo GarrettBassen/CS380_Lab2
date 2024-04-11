@@ -9,10 +9,10 @@ class BinarySearchTree
     */
    static class Node
    {
-      protected Node left, right;
-      protected int value;
+      private Node left, right;
+      private int value;
 
-      public Node(int value)
+      protected Node(int value)
       {
          this.value = value;
          this.left = null;
@@ -24,7 +24,7 @@ class BinarySearchTree
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * START OF TREE CLASS * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-   protected Node root;
+   private Node root;
 
    /**
     * Inserts given value in correct place within tree object. Objects less than the current node, traverse left.
@@ -183,50 +183,47 @@ class BinarySearchTree
       throw new NullPointerException();
    }
 
-   /*
-   this method will not compile until getMax
-   is implemented TODO EXAMINE
-   */
-   public Node delete(Node root, int key)
+   /**
+    * Removes node from tree using value or doing nothing if value does not exist.
+    * @param key value to remove
+    */
+   public void delete(int key)
    {
-      if(root == null)
+      // Get node reference
+      Node node = this.getNode(key);
+
+      // Do nothing if value is not in tree
+      if (node == null)
       {
-         return root;
+         return;
       }
-      else if(key < root.value)
+
+      //case #1: leaf node
+      if(node.left == null && node.right == null)
       {
-         root.left = delete(root.left, key);
+         this.root = null;
       }
-      else if(key > root.value)
+      //case #2 : only left child
+      else if(node.right == null)
       {
-         root.right = delete(root.right, key);
+         node = node.left;
       }
+      //case #3 : only right child
+      else if(node.left == null)
+      {
+         node = node.right;
+      }
+      //case #4 : 2 children
       else
       {
-         //node has been found
-         if(root.left == null && root.right == null)
-         {
-            //case #1: leaf node
-            root = null;
-         }
-         else if(root.right == null)
-         {
-            //case #2 : only left child
-            root = root.left;
-         }
-         else if(root.left == null)
-         {
-            //case #2 : only right child
-            root = root.right;
-         }
-         else
-         {
-            //case #3 : 2 children
-            root.value = getMax();
-            root.left = delete(root.left, root.value);
-         }
+         // Get minimum value in right subtree and replace current node
+         Node minVal = getMinSubtree(node.right);
+         Node[] children = new Node[] { node.left, node.right };
+         node = minVal;
+         node.left = children[0];
+         node.right = children[1];
+         delete(minVal.value);
       }
-      return root;
    }
 
 
@@ -273,5 +270,23 @@ class BinarySearchTree
       recursivePostOrder(root.left);
       recursivePostOrder(root.right);
       System.out.printf(" %d", root.value);
+   }
+
+   /**
+    * Gets and returns the minimum subtree value for tree node removal.
+    * @return Node minimum subtree value
+    */
+   private Node getMinSubtree(Node node)
+   {
+      // Crawl left until minimum value is found
+      Node crawler = node;
+      while (true)
+      {
+         if (crawler.left == null)
+         {
+            return crawler;
+         }
+         crawler = crawler.left;
+      }
    }
 }
